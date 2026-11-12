@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Crear cuenta</title>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+    </style>
+    <script src="../assets/js/auth/signup.js"></script>
+</head>
+
+<body class="bg-[#000000] flex items-center justify-center min-h-screen p-6 select-none">
+    <div
+        class="bg-[#111814] rounded-3xl p-12 w-full max-w-5xl flex flex-col md:flex-row items-center gap-16 border border-white/5 shadow-2xl">
+        <div class="w-full md:w-1/2 flex flex-col items-center text-center select-none">
+            <h1 class="text-6xl font-black text-[#00bf63] mb-6 tracking-tight"><img src="../assets/img/logotipoSporty.png"
+                    alt="SportyLogo" style="width: 250px; "></h1>
+            <blockquote class="text-center text-2xl font-semibold text-white italic">
+                Accede a tu entrenamiento,
+                <span
+                    class="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-pink-500">
+                    <span class="relative text-white">resultados</span>
+                </span>
+                y metas desde cualquier lugar.
+            </blockquote>
+        </div>
+        <div class="w-full md:w-1/2">
+            <h2 class="text-4xl font-black text-white mb-10 select-none">Crear cuenta</h2>
+            <form id="signup-form" action="../../backend/public/api/auth/signup.php" method="POST" class="space-y-4">
+                <p id="err_general" class="hidden text-red-500 text-sm font-bold text-center bg-red-100/10 p-2 rounded error-text"></p>
+                <div>
+                    <label
+                        class="block text-sm font-bold text-gray-300 mb-1 uppercase tracking-wide after:ml-0.5 after:text-red-500 after:content-['*']">Nombre
+                        completo</label>
+                    <input type="text" name="name" placeholder="Nombre y Apellidos" required
+                        class="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-500 transition-colors">
+                    <p id="err_name" class="hidden text-red-500 text-xs italic mt-1 error-text"></p>
+                </div>
+                <div>
+                    <label
+                        class="block text-sm font-bold text-gray-300 mb-1 uppercase tracking-wide after:ml-0.5 after:text-red-500 after:content-['*']">Nombre
+                        de Usuario</label>
+                    <input type="text" name="nickname" placeholder="Nickname" required
+                        pattern="[a-zA-Z0-9._\-]+"
+                        title="Solo letras, números, puntos (.), guiones (-) y guiones bajos (_). Sin espacios."
+                        class="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-500 transition-colors">
+                    <p id="err_nickname" class="hidden text-red-500 text-xs italic mt-1 error-text"></p>
+                </div>
+                <div>
+                    <label
+                        class="block text-sm font-bold text-gray-300 mb-1 uppercase tracking-wide after:ml-0.5 after:text-red-500 after:content-['*']">Correo
+                        electrónico</label>
+                    <input type="email" name="email" placeholder="ejemplo@gmail.com" required
+                        class="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-500 transition-colors ">
+                    <p id="err_email" class="hidden text-red-500 text-xs italic mt-1 error-text"></p>
+                </div>
+                <div>
+                    <label
+                        class="block text-sm font-bold text-gray-300 mb-1 uppercase tracking-wide after:ml-0.5 after:text-red-500 after:content-['*']">Teléfono</label>
+                    <input type="number" name="telefono" placeholder="600 000 000" required
+                        class="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-500 transition-colors">
+                    <p id="err_telefono" class="hidden text-red-500 text-xs italic mt-1 error-text"></p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label
+                            class="block text-sm font-bold text-gray-300 mb-1 uppercase tracking-wide text-xs after:ml-0.5 after:text-red-500 after:content-['*']">Contraseña</label>
+                        <input type="password" name="contrasena" placeholder="Introducir Contraseña" required
+                            class="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-500 transition-colors">
+                        <p id="err_contrasena" class="hidden text-red-500 text-xs italic mt-1 error-text"></p>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-sm font-bold text-gray-300 mb-1 uppercase tracking-wide text-xs after:ml-0.5 after:text-red-500 after:content-['*']">Confirmar Contraseña</label>
+                        <input type="password" name="confirmarContrasena" placeholder="Confirmar Contraseña" required
+                            class="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-500 transition-colors">
+                        <p id="err_confirmarContrasena" class="hidden text-red-500 text-xs italic mt-1 error-text"></p>
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="bg-[#00bf63] hover:bg-green-600 active:bg-[#00bf63] text-white font-bold py-3 px-6 rounded-lg w-full">Registrarme</button>
+            </form>
+            <div class="mt-8 text-center">
+                <p class="text-gray-400 font-medium">¿Ya tienes cuenta?<br> <a href="login.html"class="text-[#00bf63] font-bold hover:underline ml-1">Iniciar Sesión</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

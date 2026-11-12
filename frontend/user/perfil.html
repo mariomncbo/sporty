@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - Sporty</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Nunito', sans-serif; background-color: #000000; color: white; -webkit-user-select: none; user-select: none; }
+        .active-link { color: #00bf63; border-right: 4px solid #00bf63; }
+        .lista-ejercicios::-webkit-scrollbar { width: 4px; }
+        .lista-ejercicios::-webkit-scrollbar-track { background: transparent; }
+        .lista-ejercicios::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+        .lista-ejercicios::-webkit-scrollbar-thumb:hover { background: #00bf63; }
+    </style>
+</head>
+<body class="bg-[#000000] text-white flex min-h-screen relative">
+
+    <aside class="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 bg-[#111814] border-r border-white/10 p-6 z-50">
+        <div class="mb-10 flex justify-center w-full">
+            <img src="../assets/img/sportyLogotipo.png" alt="Sporty" class="w-32">
+        </div>
+        <nav class="space-y-4">
+            <a href="inicio.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span>Inicio</span>
+            </a>
+            <a href="explorar.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span>Explorar</span>
+            </a>
+            <a href="mapa.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <span>Mapa</span>
+            </a>
+            <button onclick="abrirModalPublicar()" class="w-full flex items-center gap-4 text-gray-400 hover:text-[#00bf63] group text-sm font-bold transition-colors">
+                <span class="h-6 w-6 flex items-center justify-center rounded-lg border-2 border-current">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                </span>
+                <span>Publicar</span>
+            </button>
+            <a id="navMensajesLink" href="mensajes.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                <span>Mensajes</span>
+            </a>
+            <a id="navNotifLink" href="notificaciones.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                <span>Notificaciones</span>
+            </a>
+            <a href="perfil.html" class="flex items-center gap-4 text-[#00bf63] hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6 text-[#00bf63]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                <span>Perfil</span>
+            </a>
+        </nav>
+        
+        <div class="mt-auto relative border-t border-gray-800 pt-6">
+            <div id="userMenu" class="hidden absolute bottom-full left-0 w-full mb-2 bg-[#181818] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50">
+                <a href="../auth/login.html" class="block px-4 py-4 text-[10px] font-black text-gray-300 hover:bg-white/5 hover:text-white transition uppercase tracking-widest text-center">Cambiar cuenta</a>
+                <div class="border-t border-white/5"></div>
+                <a href="../auth/login.html" class="block px-4 py-4 text-[10px] font-black text-red-500 hover:bg-red-500/10 transition uppercase tracking-widest text-center">Cerrar Sesion</a>
+            </div>
+
+            <button onclick="toggleUserMenu(event)" class="w-full flex items-center justify-between p-3 -mx-3 rounded-2xl hover:bg-white/5 transition-colors group cursor-pointer">
+                <div class="flex items-center gap-3 overflow-hidden">
+                    <div class="w-10 h-10 rounded-full bg-[#111814] border border-[#00bf63] flex items-center justify-center shrink-0 overflow-hidden">
+                        <img id="foto_user_aside" src="" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col text-left truncate">
+                        <span id="nombre_user_aside" class="text-sm font-black text-white truncate group-hover:text-[#00bf63] transition-colors"></span>
+                        <span id="username_user_aside" class="text-[10px] text-gray-500 font-bold uppercase tracking-widest truncate"></span>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </aside>
+
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-[#111814]/95 backdrop-blur-md border-t border-gray-800 z-50 px-6 py-3">
+        <div class="flex items-center justify-between max-w-md mx-auto w-full">
+            <a href="inicio.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></a>
+            <a href="explorar.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></a>
+            <button onclick="abrirModalPublicar()" class="flex items-center justify-center w-9 h-9 rounded-xl bg-[#00bf63] text-black active:scale-90 transition-transform focus:outline-none">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </button>
+            <a id="navMensajesMobile" href="mensajes.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg></a>
+            <a id="navNotifMobile" href="notificaciones.html" class="text-gray-400 hover:text-white transition"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></a>
+            <button class="focus:outline-none active:scale-90 transition-transform">
+                <img id="foto_user_mobile_nav" src="" alt="" class="w-8 h-8 rounded-full border border-gray-600 bg-gray-800 object-cover">
+            </button>
+        </div>
+    </nav>
+
+    <main class="md:ml-64 flex-1 w-full pb-24 md:pb-0 overflow-x-hidden">
+        
+        <div class="h-48 md:h-64 bg-cover bg-center bg-gray-900 w-full relative">
+            <div class="w-full h-full bg-gradient-to-b from-black/20 to-[#000000] relative z-10"></div>
+        </div>
+
+        <div class="px-6 md:px-12 -mt-16 md:-mt-20 w-full relative z-20">
+            <div class="flex flex-col md:flex-row items-center md:items-end gap-6 mb-8 text-center md:text-left w-full">
+                
+                <div id="user_avatar_wrap" class="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#000000] shadow-xl overflow-hidden shrink-0 bg-[#111814]">
+                    <img id="user_avatar" src="" alt="" class="w-full h-full object-cover">
+                    <div id="user_verified_badge" class="absolute bottom-2 right-2 bg-[#00bf63] p-1.5 rounded-full border-2 border-[#000000] hidden">
+                        <svg class="h-4 w-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                    </div>
+                </div>
+
+                <div class="flex-1 flex flex-col md:flex-row justify-between items-start w-full pt-2 md:pt-4 gap-4 text-center md:text-left">
+                    <div class="w-full md:w-auto">
+                        <h1 id="user_name" class="text-2xl md:text-4xl font-extrabold text-white"></h1>
+                        <p id="user_username" class="text-[#00bf63] text-sm font-semibold mb-3"></p>
+                        <p id="user_bio" class="text-gray-400 text-sm max-w-lg mx-auto md:mx-0"></p>
+                        <a id="user_website" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-[#00bf63] text-sm font-semibold hover:underline mt-1 inline-flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                            <span id="user_website_text"></span>
+                        </a>
+
+                        <div class="flex gap-5 text-center justify-center md:justify-start py-2 w-full mt-2">
+                            <button id="btn_ver_seguidores" class="hover:opacity-70 transition-opacity">
+                                <p id="user_followers_count" class="font-extrabold text-xl text-white">0</p>
+                                <p class="text-gray-400 text-[10px] md:text-xs uppercase tracking-wider font-semibold mt-0.5">Seguidores</p>
+                            </button>
+                            <button id="btn_ver_seguidos" class="hover:opacity-70 transition-opacity">
+                                <p id="user_following_count" class="font-extrabold text-xl text-white">0</p>
+                                <p class="text-gray-400 text-[10px] md:text-xs uppercase tracking-wider font-semibold mt-0.5">Seguidos</p>
+                            </button>
+                            <div>
+                                <p id="user_posts_count" class="font-extrabold text-xl text-white">0</p>
+                                <p class="text-gray-400 text-[10px] md:text-xs uppercase tracking-wider font-semibold mt-0.5">Publicaciones</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 w-full md:w-auto justify-center mt-4 md:mt-0 shrink-0">
+                        <a id="btn_editar_perfil" href="ajustes.html" class="flex-1 md:flex-none bg-[#00bf63] text-black font-bold px-6 py-2.5 rounded-full text-sm hover:scale-105 transition-transform text-center flex items-center justify-center">Editar Perfil</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-b border-gray-800 mb-8 overflow-x-auto w-full">
+                <ul class="flex gap-6 md:gap-8 font-semibold text-gray-400 whitespace-nowrap w-full">
+                    <li onclick="switchTab('fotos')" id="tab-fotos" class="tab-btn pb-3 text-white border-b-2 border-[#00bf63] cursor-pointer flex items-center gap-2 text-sm md:text-base">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Fotos
+                    </li>
+                    <li onclick="switchTab('rutinas')" id="tab-rutinas" class="tab-btn pb-3 hover:text-white cursor-pointer flex items-center gap-2 text-sm md:text-base border-b-2 border-transparent">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        Rutinas
+                    </li>
+                    <li onclick="switchTab('guardados')" id="tab-guardados" class="tab-btn pb-3 hover:text-white cursor-pointer flex items-center gap-2 text-sm md:text-base border-b-2 border-transparent">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                        Guardados
+                    </li>
+                </ul>
+            </div>
+
+            <div id="content-fotos" class="tab-content w-full grid grid-cols-3 gap-1 md:gap-4">
+                </div>
+
+            <div id="content-rutinas" class="tab-content hidden w-full">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full" id="rutinas-list">
+                    <div id="add-routine-card" class="bg-[#111814] p-6 rounded-2xl border border-dashed border-gray-700 flex flex-col items-center justify-center cursor-pointer hover:border-[#00bf63] transition-colors min-h-[200px] w-full">
+                        <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-[#00bf63]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <p class="font-bold text-gray-400">Nueva Rutina</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-guardados" class="tab-content hidden w-full grid grid-cols-3 gap-1 md:gap-4">
+            </div>
+
+        </div>
+    </main>
+
+    <div id="modal-routine" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4 backdrop-blur-sm w-full">
+        <div class="bg-[#111814] border border-gray-800 w-full max-w-md rounded-3xl p-8 shadow-2xl">
+            <h2 class="text-2xl font-bold mb-6">Nueva Rutina</h2>
+            <input type="text" id="input-routine-name" class="w-full bg-black border border-gray-800 rounded-xl p-3 mb-4 outline-none focus:border-[#00bf63]" placeholder="Nombre...">
+            <textarea id="input-routine-desc" rows="3" class="w-full bg-black border border-gray-800 rounded-xl p-3 mb-6 outline-none focus:border-[#00bf63]" placeholder="Ejercicios..."></textarea>
+            <div class="flex gap-3 w-full">
+                <button onclick="closeModal()" class="flex-1 bg-gray-800 py-3 rounded-2xl font-bold text-xs">Cancelar</button>
+                <button onclick="createRoutine()" class="flex-1 bg-[#00bf63] py-3 rounded-2xl font-bold text-black text-xs">Crear</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Seguidores / Seguidos -->
+    <div id="modalSocial" class="hidden fixed inset-0 z-[130] flex items-center justify-center p-4" onclick="cerrarModalSocial()">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div class="relative z-10 bg-[#111814] border border-white/10 rounded-3xl w-full max-w-sm max-h-[80vh] flex flex-col shadow-2xl" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 shrink-0">
+                <h3 id="modalSocialTitulo" class="text-sm font-black uppercase tracking-widest text-white"></h3>
+                <button onclick="cerrarModalSocial()" class="text-gray-500 hover:text-white transition">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div id="modalSocialLista" class="overflow-y-auto flex-1 px-4 py-3 space-y-1"></div>
+        </div>
+    </div>
+
+    <script src="../assets/js/user/story-viewer.js"></script>
+    <script src="../assets/js/user/perfil.js"></script>
+    <script src="../assets/js/user/nav-badge.js"></script>
+    <!-- Modal Detalle Post -->
+    <div id="modalPost" class="hidden fixed inset-0 z-[120] flex items-center justify-center p-4" onclick="cerrarPost()">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div class="relative z-10 bg-[#111814] border border-white/10 rounded-3xl overflow-hidden w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row shadow-2xl" onclick="event.stopPropagation()">
+            <!-- Imagen -->
+            <div class="w-full md:w-1/2 bg-black flex items-center justify-center flex-shrink-0 max-h-[40vh] md:max-h-none">
+                <img id="modalPost_img" src="" alt="" class="w-full h-full object-contain">
+            </div>
+            <!-- Panel derecho -->
+            <div class="flex flex-col w-full md:w-1/2 overflow-hidden">
+                <!-- Cabecera autor -->
+                <div class="flex items-center gap-3 p-4 border-b border-white/5 shrink-0">
+                    <img id="modalPost_avatar" src="" alt="" class="w-9 h-9 rounded-full object-cover border border-[#00bf63]">
+                    <div>
+                        <p id="modalPost_name" class="text-sm font-black text-white"></p>
+                        <p id="modalPost_nick" class="text-[10px] text-gray-500 font-bold uppercase tracking-widest"></p>
+                    </div>
+                    <button onclick="cerrarPost()" class="ml-auto text-gray-500 hover:text-white transition">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <!-- Comentarios + caption -->
+                <div id="modalPost_comentarios" class="flex-1 overflow-y-auto p-4 space-y-4 text-sm"></div>
+                <!-- AÃ±adir comentario -->
+                <div class="border-t border-white/5 p-3 flex items-center gap-2 shrink-0">
+                    <input id="modalPost_input" type="text" maxlength="500" placeholder="Añade un comentario..." class="flex-1 bg-transparent text-white text-sm outline-none placeholder-gray-600 font-medium">
+                    <button onclick="enviarComentario()" class="text-[#00bf63] font-black text-xs uppercase tracking-widest hover:text-white transition">Publicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Publicar -->
+    <div id="modalPublicar" class="hidden fixed inset-0 z-[100] flex items-end md:items-center justify-center">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="cerrarModalPublicar()"></div>
+        <div class="relative bg-[#111814] border border-white/10 rounded-t-3xl md:rounded-3xl w-full md:max-w-md p-6 shadow-2xl">
+            <div id="modalPaso1">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-base font-black uppercase tracking-widest text-white">¿Que quieres publicar?</h2>
+                    <button onclick="cerrarModalPublicar()" class="text-gray-500 hover:text-white transition"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="elegirTipo('post')" class="flex flex-col items-center justify-center gap-3 p-6 bg-[#1a1a1a] border border-white/10 rounded-2xl hover:border-[#00bf63] hover:bg-[#00bf63]/5 transition-all group">
+                        <svg class="h-8 w-8 text-gray-400 group-hover:text-[#00bf63] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <span class="text-xs font-black uppercase tracking-widest text-gray-400 group-hover:text-[#00bf63] transition-colors">Post</span>
+                    </button>
+                    <button onclick="elegirTipo('historia')" class="flex flex-col items-center justify-center gap-3 p-6 bg-[#1a1a1a] border border-white/10 rounded-2xl hover:border-[#00bf63] hover:bg-[#00bf63]/5 transition-all group">
+                        <svg class="h-8 w-8 text-gray-400 group-hover:text-[#00bf63] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+                        <span class="text-xs font-black uppercase tracking-widest text-gray-400 group-hover:text-[#00bf63] transition-colors">Historia</span>
+                    </button>
+                </div>
+            </div>
+            <div id="modalPaso2" class="hidden">
+                <div class="flex items-center gap-3 mb-6">
+                    <button onclick="volverPaso1()" class="text-gray-500 hover:text-white transition"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg></button>
+                    <h2 id="modalTitulo" class="text-base font-black uppercase tracking-widest text-white">Nuevo Post</h2>
+                    <button onclick="cerrarModalPublicar()" class="ml-auto text-gray-500 hover:text-white transition"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+                </div>
+                <label for="inputImagen" class="block mb-4 cursor-pointer">
+                    <div id="zonaImagen" class="w-full h-40 rounded-2xl border-2 border-dashed border-white/20 flex flex-col items-center justify-center gap-2 text-gray-500 hover:border-[#00bf63]/50 hover:text-[#00bf63]/70 transition-all overflow-hidden">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                        <span class="text-xs font-bold uppercase tracking-widest">Elige o arrastra una imagen</span>
+                    </div>
+                    <input id="inputImagen" type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime" class="hidden" onchange="previsualizarImagen(event)">
+                </label>
+                <textarea id="captionPost" rows="3" placeholder="Escribe un pie de foto..." class="w-full bg-[#1a1a1a] border border-white/10 rounded-2xl px-4 py-3 text-sm text-white placeholder-gray-600 resize-none outline-none focus:border-[#00bf63]/50 transition-all font-medium mb-4"></textarea>
+                <button id="btnEnviarPublicacion" onclick="enviarPublicacion()" class="w-full py-3 rounded-2xl bg-[#00bf63] text-black text-sm font-black uppercase tracking-widest hover:bg-[#00e070] transition-colors">Publicar</button>
+                <p id="errorPublicar" class="hidden text-xs text-red-400 font-bold text-center mt-3"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Modal Añadir Ejercicio ──────────────────────────────────────────── -->
+    <div id="modalEjercicio" class="hidden fixed inset-0 z-[130] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/75 backdrop-blur-sm" onclick="cerrarModalEjercicio()"></div>
+        <div class="relative bg-[#111814] border border-white/10 rounded-3xl w-full max-w-sm p-6 shadow-2xl flex flex-col gap-4 z-10">
+            <div class="flex items-center justify-between">
+                <h3 class="text-sm font-black uppercase tracking-widest text-white">Añadir ejercicio</h3>
+                <button onclick="cerrarModalEjercicio()" class="text-gray-500 hover:text-white transition">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-3">
+                <div>
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Nombre del ejercicio *</label>
+                    <input id="ej_nombre" type="text" maxlength="150" placeholder="p.ej. Press banca" class="mt-1 w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 outline-none focus:border-[#00bf63]/50 transition">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Series</label>
+                        <input id="ej_series" type="number" min="1" max="99" value="3" class="mt-1 w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white outline-none focus:border-[#00bf63]/50 transition">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Repeticiones</label>
+                        <input id="ej_reps" type="number" min="1" max="99" value="10" class="mt-1 w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white outline-none focus:border-[#00bf63]/50 transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Peso (kg) <span class="text-gray-700">— opcional</span></label>
+                    <input id="ej_peso" type="number" min="0" max="9999" step="0.5" placeholder="—" class="mt-1 w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 outline-none focus:border-[#00bf63]/50 transition">
+                </div>
+            </div>
+            <p id="ej_error" class="hidden text-xs text-red-400 font-bold text-center"></p>
+            <button id="btn_guardar_ej" onclick="guardarEjercicio()" class="w-full py-3 rounded-2xl bg-[#00bf63] text-black text-sm font-black uppercase tracking-widest hover:bg-[#00e070] transition">Guardar</button>
+        </div>
+    </div>
+
+    <!-- ── Modal Entrenamiento ──────────────────────────────────────────────── -->
+    <div id="modalEntrenamiento" class="hidden fixed inset-0 z-[130] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div class="relative bg-[#111814] border border-white/10 rounded-3xl w-full max-w-md p-6 shadow-2xl flex flex-col gap-5 z-10 max-h-[90vh] overflow-y-auto">
+            <!-- Header -->
+            <div class="flex items-start justify-between gap-3">
+                <div>
+                    <p class="text-[10px] font-black text-[#00bf63] uppercase tracking-widest mb-0.5">Entrenando</p>
+                    <h3 id="entrenamiento_nombre" class="text-xl font-black text-white leading-tight"></h3>
+                </div>
+                <button onclick="cerrarModalEntrenamiento()" class="text-gray-500 hover:text-white transition shrink-0 mt-1">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <!-- Cronómetro -->
+            <div class="flex flex-col items-center py-4 border border-white/5 rounded-2xl bg-black/20">
+                <p id="entrenamiento_timer" class="text-5xl font-black text-white tabular-nums tracking-tighter">00:00</p>
+                <p class="text-[10px] text-gray-600 font-black uppercase tracking-widest mt-1">Tiempo transcurrido</p>
+            </div>
+
+            <!-- Progreso -->
+            <p id="entrenamiento_progreso" class="text-[10px] font-black text-gray-500 uppercase tracking-widest text-center"></p>
+
+            <!-- Checklist -->
+            <div id="entrenamiento_checklist" class="flex flex-col gap-2"></div>
+
+            <!-- Pantalla de finalización -->
+            <div id="entrenamiento_fin" class="hidden flex-col items-center gap-4 py-4 text-center">
+                <div class="text-5xl">🏆</div>
+                <p class="text-lg font-black text-white">¡Entrenamiento completado!</p>
+                <p class="text-sm text-gray-400">Tiempo total: <span id="entrenamiento_tiempo_final" class="text-[#00bf63] font-black tabular-nums"></span></p>
+                <button onclick="cerrarModalEntrenamiento()" class="mt-2 w-full py-3 rounded-2xl bg-[#00bf63] text-black text-sm font-black uppercase tracking-widest hover:bg-[#00e070] transition">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>window.location.replace('./user/inicio.html');</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>eSporty</title>
+    <style>
+        body { font-family: 'Nunito', sans-serif; background-color: #000000; color: white; -webkit-user-select: none; user-select: none; }
+    </style>
+</head>
+
+<body class="bg-[#000000] text-white flex min-h-screen relative">
+
+    <!-- Sidebar lateral (escritorio) -->
+    <aside class="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 bg-[#111814] border-r border-white/10 p-6 z-50">
+        <div class="mb-10 flex justify-center w-full">
+            <img src="./assets/img/sportyLogotipo.png" alt="Sporty" class="w-32">
+        </div>
+        <nav class="space-y-4">
+            <a href="./user/inicio.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span>Inicio</span>
+            </a>
+            <a href="./user/explorar.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span>Explorar</span>
+            </a>
+            <a href="./user/mensajes.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                <span>Mensajes</span>
+            </a>
+            <a href="./user/perfil.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto relative border-t border-gray-800 pt-6">
+            <div id="userMenu" class="hidden absolute bottom-full left-0 w-full mb-2 bg-[#181818] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50">
+                <div class="border-t border-white/5"></div>
+                <a id="logout-btn" href="./auth/login.html" class="block px-4 py-4 text-[10px] font-black text-red-500 hover:bg-red-500/10 transition uppercase tracking-widest text-center">Cerrar Sesión</a>
+            </div>
+
+            <button onclick="toggleUserMenu(event)" class="w-full flex items-center justify-between p-3 -mx-3 rounded-2xl hover:bg-white/5 transition-colors group cursor-pointer">
+                <div class="flex items-center gap-3 overflow-hidden">
+                    <div class="w-10 h-10 rounded-full bg-[#111814] border border-[#00bf63] flex items-center justify-center shrink-0 overflow-hidden">
+                        <img id="foto_user_aside" src="./assets/img/no_user_profile.png" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col text-left truncate">
+                        <span id="nombre_user_aside" class="text-sm font-black text-white truncate group-hover:text-[#00bf63] transition-colors"></span>
+                        <span id="username_user_aside" class="text-[10px] text-gray-500 font-bold uppercase tracking-widest truncate"></span>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Nav móvil (inferior) -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-[#111814]/95 backdrop-blur-md border-t border-gray-800 z-50 px-6 py-3">
+        <div class="flex items-center justify-between max-w-md mx-auto w-full">
+            <a href="./user/inicio.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></a>
+            <a href="./user/explorar.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></a>
+            <a href="./user/mensajes.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg></a>
+            <a href="./user/perfil.html" class="text-gray-400"><img id="foto_user_mobile_nav" src="./assets/img/no_user_profile.png" alt="" class="w-8 h-8 rounded-full border border-gray-600 bg-gray-800 object-cover"></a>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="md:ml-64 flex-1 flex flex-col items-center justify-center min-h-screen p-6 pb-24 md:pb-6">
+        <!-- Logo + Hero -->
+        <div class="flex flex-col items-center text-center mb-16">
+            <img src="./assets/img/logotipoSporty.png" alt="SportyLogo" class="w-56 mb-6">
+            <h1 class="text-5xl font-black text-white mb-4">Bienvenido a <span class="text-[#00bf63]">eSporty</span></h1>
+            <p class="text-gray-400 text-xl max-w-lg">
+                Tu plataforma de entrenamiento personalizado. Registra tus
+                <span class="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-pink-500">
+                    <span class="relative text-white font-bold">resultados</span>
+                </span>,
+                sigue tus metas y supera tus límites.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        function toggleUserMenu(event) {
+            event.stopPropagation();
+            const menu = document.getElementById('userMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', () => {
+            document.getElementById('userMenu')?.classList.add('hidden');
+        });
+
+        async function cerrarSesion(event) {
+            event.preventDefault();
+            try {
+                await fetch('../backend/public/api/auth/logout.php', {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+            } catch (error) {
+                console.error('Error cerrando sesion:', error);
+            } finally {
+                window.location.href = './auth/login.html';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const res = await fetch('../backend/public/api/auth/user.php', {
+                    credentials: 'include'
+                });
+                if (!res.ok) {
+                    window.location.href = './auth/login.html';
+                } else {
+                    const data = await res.json();
+                    if (!data.success) {
+                        window.location.href = './auth/login.html';
+                    } else {
+                        const u = data.usuario;
+                        const foto = u.foto_perfil || './assets/img/no_user_profile.png';
+                        document.getElementById('foto_user_aside').src = foto;
+                        document.getElementById('foto_user_mobile_nav').src = foto;
+                        document.getElementById('nombre_user_aside').textContent = u.nombre || u.nickname;
+                        document.getElementById('username_user_aside').textContent = '@' + u.nickname;
+                    }
+                }
+            } catch (e) {
+                window.location.href = './auth/login.html';
+            }
+
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) logoutBtn.addEventListener('click', cerrarSesion);
+        });
+    </script>
+
+</body>
+</html>

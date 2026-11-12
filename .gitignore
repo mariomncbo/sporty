@@ -1,0 +1,16 @@
+# Mac
+.DS_Store
+
+# Imágenes subidas por usuarios (no se suben al repo, solo se mantiene la estructura)
+backend/public/uploads/*/*
+!backend/public/uploads/*/.gitkeep
+
+# Variables de entorno (contraseñas, claves...)
+.env
+
+# Dependencias
+/vendor
+/node_modules
+backend/vendor/
+backend/composer.lock
+.vscode

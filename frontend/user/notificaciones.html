@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones - Sporty</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Nunito', sans-serif; background-color: #000000; color: white; -webkit-user-select: none; user-select: none; }
+        .active-link { color: #00bf63; }
+        ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: #000; } ::-webkit-scrollbar-thumb { background: #111814; border-radius: 10px; } ::-webkit-scrollbar-thumb:hover { background: #00bf63; }
+    </style>
+</head>
+<body class="bg-[#000000] text-white flex min-h-screen relative">
+
+    <!-- ── SIDEBAR (escritorio) ────────────────────────────────────────────── -->
+    <aside class="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 bg-[#111814] border-r border-white/10 p-6 z-50">
+        <div class="mb-10 flex justify-center w-full">
+            <img src="../assets/img/sportyLogotipo.png" alt="Sporty" class="w-32">
+        </div>
+        <nav class="space-y-4">
+            <a href="inicio.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span>Inicio</span>
+            </a>
+            <a href="explorar.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span>Explorar</span>
+            </a>
+            <a href="mapa.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <span>Mapa</span>
+            </a>
+            <button onclick="abrirModalPublicar()" class="w-full flex items-center gap-4 text-gray-400 hover:text-[#00bf63] group text-sm font-bold transition-colors">
+                <span class="h-6 w-6 flex items-center justify-center rounded-lg border-2 border-current">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                </span>
+                <span>Publicar</span>
+            </button>
+            <a id="navMensajesLink" href="mensajes.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                <span>Mensajes</span>
+            </a>
+            <a href="notificaciones.html" class="flex items-center gap-4 text-[#00bf63] group text-sm font-bold">
+                <svg class="h-6 w-6 text-[#00bf63]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                <span>Notificaciones</span>
+            </a>
+            <a href="perfil.html" class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto relative border-t border-gray-800 pt-6">
+            <div id="userMenu" class="hidden absolute bottom-full left-0 w-full mb-2 bg-[#181818] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50">
+                <a href="../auth/login.html" class="block px-4 py-4 text-[10px] font-black text-gray-300 hover:bg-white/5 hover:text-white transition uppercase tracking-widest text-center">Cambiar cuenta</a>
+                <div class="border-t border-white/5"></div>
+                <a href="../auth/login.html" class="block px-4 py-4 text-[10px] font-black text-red-500 hover:bg-red-500/10 transition uppercase tracking-widest text-center">Cerrar Sesion</a>
+            </div>
+            <button onclick="toggleUserMenu(event)" class="w-full flex items-center justify-between p-3 -mx-3 rounded-2xl hover:bg-white/5 transition-colors group cursor-pointer">
+                <div class="flex items-center gap-3 overflow-hidden">
+                    <div class="w-10 h-10 rounded-full bg-[#111814] border border-[#00bf63] flex items-center justify-center shrink-0 overflow-hidden">
+                        <img id="foto_user_aside" src="" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col text-left truncate">
+                        <span id="nombre_user_aside" class="text-sm font-black text-white truncate group-hover:text-[#00bf63] transition-colors"></span>
+                        <span id="username_user_aside" class="text-[10px] text-gray-500 font-bold uppercase tracking-widest truncate"></span>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ── NAV MÓVIL ──────────────────────────────────────────────────────────── -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-[#111814]/95 backdrop-blur-md border-t border-gray-800 z-50 px-4 py-3">
+        <div class="flex items-center justify-between max-w-md mx-auto w-full">
+            <a href="inicio.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></a>
+            <a href="explorar.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></a>
+            <button onclick="abrirModalPublicar()" class="flex items-center justify-center w-9 h-9 rounded-xl bg-[#00bf63] text-black active:scale-90 transition-transform focus:outline-none">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </button>
+            <a id="navMensajesMobile" href="mensajes.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg></a>
+            <a href="notificaciones.html" class="text-[#00bf63]"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></a>
+            <a href="perfil.html" class="focus:outline-none">
+                <img id="foto_user_mobile_nav" src="" alt="" class="w-8 h-8 rounded-full border border-gray-600 bg-gray-800 object-cover">
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── MAIN ──── -->
+    <main class="md:ml-64 flex-1 w-full pb-24 md:pb-0">
+        <div class="max-w-2xl mx-auto px-4 py-8 pt-8">
+
+            <div class="flex items-center justify-between mb-8">
+                <h1 class="text-2xl font-black">Notificaciones</h1>
+                <button id="btnMarcarTodas" class="text-xs text-[#00bf63] font-bold hover:underline hidden">Marcar todas leídas</button>
+            </div>
+
+            <!-- Estado cargando -->
+            <div id="loadingNotif" class="flex justify-center py-16">
+                <svg class="animate-spin h-8 w-8 text-[#00bf63]" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+            </div>
+
+            <!-- Sin notificaciones -->
+            <div id="emptyNotif" class="hidden flex-col items-center justify-center py-24 text-center">
+                <svg class="h-16 w-16 text-gray-700 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                <p class="text-gray-500 font-bold text-lg">Sin notificaciones</p>
+                <p class="text-gray-600 text-sm mt-1">Aquí aparecerán tus nuevas notificaciones</p>
+            </div>
+
+            <!-- Lista de notificaciones -->
+            <div id="listaNotificaciones" class="hidden space-y-2"></div>
+
+        </div>
+    </main>
+
+    <!-- ── MODAL PUBLICAR (igual que las demás páginas) ──────────────────────── -->
+    <div id="modalPublicar" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-end md:items-center justify-center p-4">
+        <div class="bg-[#111814] border border-white/10 rounded-3xl w-full max-w-md shadow-2xl">
+            <div class="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/10">
+                <h2 id="tituloModal" class="text-lg font-black">Nueva publicación</h2>
+                <button onclick="cerrarModalPublicar()" class="text-gray-400 hover:text-white transition">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="px-6 pt-4 pb-2 flex gap-3 border-b border-white/5">
+                <button id="btnTabPost" onclick="cambiarTipoPublicacion('post')" class="flex-1 py-2 rounded-xl text-sm font-black bg-[#00bf63] text-black transition">Post</button>
+                <button id="btnTabHistoria" onclick="cambiarTipoPublicacion('historia')" class="flex-1 py-2 rounded-xl text-sm font-black bg-white/5 text-gray-300 hover:bg-white/10 transition">Historia</button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div id="zonaImagen" class="w-full h-40 border-2 border-dashed border-white/20 rounded-2xl flex flex-col items-center justify-center gap-2 text-gray-500 cursor-pointer hover:border-[#00bf63]/50 hover:text-[#00bf63] transition-colors" onclick="document.getElementById('inputImagen').click()">
+                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <span class="text-sm font-bold">Selecciona una imagen</span>
+                </div>
+                <input type="file" id="inputImagen" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime" class="hidden" onchange="previsualizarImagen(event)">
+                <div id="captionWrapper">
+                    <textarea id="captionPost" placeholder="Escribe un pie de foto..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 text-sm text-white placeholder-gray-500 resize-none focus:outline-none focus:border-[#00bf63]/50 transition" rows="3" maxlength="2200"></textarea>
+                </div>
+                <p id="errorPublicar" class="text-red-400 text-xs hidden"></p>
+                <button id="btnEnviarPublicacion" onclick="enviarPublicacion()" class="w-full py-3 bg-[#00bf63] text-black font-black rounded-2xl hover:bg-[#00a855] active:scale-95 transition-all text-sm">Publicar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/user/notificaciones.js?v=2"></script>
+</body>
+</html>
