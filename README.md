@@ -1,6 +1,7 @@
 <div align="center">
   <img src="frontend/assets/img/logotipoSporty.png" alt="Sporty App" width="140" />
 </div>
+<br>
 <div align="center">
   <p><b>Sporty</b> es una aplicación web para gestión deportiva-social, compuesta por frontend (HTML/CSS/JS) y backend (PHP).  
 Incluye autenticación de usuarios y panel de administración básico.</p>
