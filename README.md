@@ -1,4 +1,4 @@
-# eSporty
+# Sporty
 
 Aplicación web para gestión deportiva-social, compuesta por frontend (HTML/CSS/JS) y backend (PHP).  
 Incluye autenticación de usuarios y panel de administración básico.
