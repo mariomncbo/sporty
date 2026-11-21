@@ -1,167 +1,108 @@
 <div align="center">
-  <img src="frontend/assets/img/logotipoSporty.png" alt="Sporty App" width="140" />
-</div>
-<br>
-<div align="center">
-  <p><b>Sporty</b> es una red social deportiva: comparte entrenamientos, crea y sigue rutinas, chatea con otros atletas y entrenadores y descubre gimnasios cerca de ti.  
-Compuesta por frontend (HTML/CSS/JS) y backend (PHP).</p>
-</div>
-
-<div align="center">
-
-
-
-https://github.com/user-attachments/assets/9ca78d96-bff8-444e-a117-1a40987177f1
-
-
-
-https://github.com/user-attachments/assets/a1f187a2-00de-4df4-8b0b-5b993746794d
-
-
-
+  <img src="frontend/assets/img/logotipoSporty.png" alt="Sporty" width="120" />
+  <h1>Sporty</h1>
+  <p>
+    <a href="https://esporty.jcloudhosting.com"><b>Web</b></a>
+  </p>
+  <p>La red social para los que entrenan: comparte tus <b>entrenamientos</b>, crea <b>rutinas</b> y encuentra <b>gimnasios</b> cerca de ti.<br />Sigue a otros atletas y entrenadores, chatea con ellos y entrena con sus rutinas.</p>
 </div>
 
----
+<p align="center">
+  <img src="docs/screenshots/inicio.png" alt="Inicio de Sporty: historias arriba, el feed con una publicación de CrossFit y sugerencias de atletas a la derecha" width="900" />
+</p>
 
-## Estado actual
+## Características
 
-- En desarrollo activo.
-- Autenticación con redirección automática según rol de usuario.
-- Feed con publicaciones e historias, comentarios y publicaciones guardadas.
-- Perfiles públicos y privados, seguidores y solicitudes de seguimiento.
-- Rutinas con ejercicios, modo entrenamiento y rutinas sociales (likes y guardadas).
-- Mensajería directa y notificaciones.
-- Mapa de gimnasios cercanos.
-- Panel de administración: métricas, usuarios, reportes y baneos.
+- **Feed e historias**: publicaciones con foto de la gente a la que sigues e historias que desaparecen a las 24 horas. Comenta, guarda las publicaciones que quieras repasar y publica las tuyas en dos clics.
+- **Perfiles**: foto, bio, deporte favorito, seguidores y seguidos. Las cuentas pueden ser privadas, con solicitudes de seguimiento, y los entrenadores llevan su insignia de verificado.
+- **Rutinas**: crea rutinas con series, repeticiones y peso, y entrénalas con cronómetro y checklist. Dale like a las rutinas de otros usuarios o guárdalas para usarlas tú.
+- **Explorar**: busca atletas y entrenadores por nombre o por deporte y descubre perfiles nuevos.
+- **Mensajes**: chat directo entre usuarios. Los mensajes nuevos llegan sin recargar la página.
+- **Notificaciones**: nuevos seguidores, comentarios y mensajes, con contadores en el menú.
+- **Mapa de gimnasios**: gimnasios cercanos a tu ubicación con su distancia, si están abiertos y qué amigos los siguen. Sigue los tuyos.
+- **Panel de administración**: métricas, gestión de usuarios, reportes por estado y tipo, y baneos permanentes o temporales.
 
----
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/perfil.png" alt="Perfil de una usuaria con su bio, contadores y cuadrícula de fotos" /></td>
+    <td width="50%"><img src="docs/screenshots/rutinas.png" alt="Modo entrenamiento de una rutina, con cronómetro y checklist de ejercicios" /></td>
+  </tr>
+  <tr>
+    <td align="center">Perfil con publicaciones, rutinas y guardados</td>
+    <td align="center">Modo entrenamiento, con cronómetro y checklist</td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/mapa.png" alt="Mapa con gimnasios cercanos y la tarjeta de un gimnasio con los amigos que lo siguen" /></td>
+    <td width="50%"><img src="docs/screenshots/mensajes.png" alt="Conversación entre una atleta y su entrenador" /></td>
+  </tr>
+  <tr>
+    <td align="center">Gimnasios cercanos y amigos que entrenan allí</td>
+    <td align="center">Mensajes directos</td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/explorar.png" alt="Explorar: categorías por deporte y sugerencias de atletas" /></td>
+    <td width="50%"><img src="docs/screenshots/admin.png" alt="Panel de administración con la gestión de reportes" /></td>
+  </tr>
+  <tr>
+    <td align="center">Explorar por deporte</td>
+    <td align="center">Panel de administración: reportes y baneos</td>
+  </tr>
+</table>
 
-## Funcionalidades
+<p align="center">
+  <img src="docs/screenshots/movil.png" alt="Sporty en el móvil: historias, feed y barra de navegación inferior" width="300" />
+  <br />
+  <sub>También en el móvil</sub>
+</p>
 
-### Inicio e historias
-Feed con las publicaciones de la gente a la que sigues, historias que caducan a las 24 h, comentarios, publicaciones guardadas y subida de nuevos posts con foto.
+<sub>Las capturas usan usuarios y gimnasios ficticios.</sub>
 
+## Stack tecnológico
 
-https://github.com/user-attachments/assets/cffd3f6a-534f-4954-a318-206564a9ad56
+| Capa | Tecnología |
+| --- | --- |
+| Frontend | HTML · JavaScript · Tailwind CSS (CDN) |
+| Backend | PHP 8.2 (PDO) · PHPMailer (correo de bienvenida) · GD (recorte de imágenes) |
+| Base de datos | MySQL 8 |
+| Mapa | Google Maps JavaScript API (Places y Geometry) |
+| Entorno | Docker Compose · phpMyAdmin |
+| Despliegue | Nginx Proxy Manager (subdominios y certificados SSL) |
 
-
-### Explorar y perfiles
-Busca atletas y entrenadores por nombre o por deporte, visita su perfil y síguelos.
-
-
-https://github.com/user-attachments/assets/6d7d0900-09bf-4baa-bbd5-bdbccd99f599
-
-
-### Rutinas y modo entrenamiento
-Crea rutinas con series, repeticiones y peso, entrena con cronómetro y checklist, y dale like o guarda las rutinas de otros usuarios.
-
-
-https://github.com/user-attachments/assets/b2df6fee-c78e-45c6-be09-37c303c66de5
-
-
-### Mensajes y notificaciones
-Chat directo entre usuarios, con mensajes nuevos que llegan sin recargar, y notificaciones de seguidores, comentarios y mensajes.
-
-
-https://github.com/user-attachments/assets/0d751b2e-8e48-4fbc-8a96-5584e9db5b96
-
-
-### Mapa de gimnasios
-Gimnasios cercanos a tu ubicación, con su estado (abierto o cerrado), la distancia, qué amigos lo siguen y la opción de seguirlo.
-
-> En el vídeo, el mapa es una simulación (OpenStreetMap y gimnasios inventados), porque la API de Google Maps no está activada. La tarjeta del gimnasio y el botón de seguir son los de la app.
-
-
-https://github.com/user-attachments/assets/db0f4dd4-15e7-4c4e-8c32-51550535c717
-
-
-### Panel de administración
-Métricas generales, gestión de reportes por estado y tipo, baneos permanentes o temporales y gestión de usuarios.
-
-
-https://github.com/user-attachments/assets/3c785faf-db83-4e86-b5f3-e6402459becf
-
-
----
-
-## Tecnologías utilizadas
-
-- Frontend: HTML, JavaScript, Tailwind CDN
-- Backend: PHP 8.2 (PDO)
-- Base de datos: MySQL 8
-- Entorno: Docker Compose + phpMyAdmin
-- Despliegue en servidor: Nginx Proxy Manager (subdominios y certificados SSL)
-
----
-
-## Estructura del repositorio
-
-- `backend`: Código PHP y configuración de base de datos.
-- `frontend`: Archivos HTML, vista administrador y usuario.
-- `docs`: Documentación general.
-- `tests`: Reservado para pruebas.
-- `docker-compose.yml`: Orquestación de servicios.
-- `.env.example`: Variables de entorno de referencia.
-
----
-
-## Puesta en marcha en entorno local
-
-**Requisitos previos:**
-- Docker Desktop instalado y ejecutándose.
-
-**Pasos:**
-1. Clonar el repositorio.
-2. Duplicar `.env.example` como `.env` y completar con las variables adecuadas.
-3. Ejecutar:
-
-```bash
-docker compose up -d --build
-```
-
-**Servicios en local:**
-- Aplicación: http://localhost:8080
-- phpMyAdmin: http://localhost:8081
-
-**Accesos directos:**
-- Login: http://localhost:8080/frontend/auth/login.html
-- Registro: http://localhost:8080/frontend/auth/signup.html
-- Home: http://localhost:8080/frontend/index.html
-- Panel admin: http://localhost:8080/frontend/admin/index.html
-
----
-
-## Despliegue real en servidor
-
-El despliegue final utiliza Nginx Proxy Manager para gestionar subdominios y SSL:
-
-- Web: https://esporty.jcloudhosting.com
-- phpMyAdmin: https://admin.esporty.jcloudhosting.com (protegido por Access List)
-
----
-
-## Variables de entorno
-
-Las credenciales y parámetros se gestionan mediante el archivo `.env`, que **no debe subirse al repositorio**.  
-Ejemplo de contenido:
+## Arquitectura
 
 ```
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=sporty_bd
-DB_USERNAME=usuario
-DB_PASSWORD=contraseña
-MYSQL_ROOT_PASSWORD=contraseña_root
-
-PHPMYADMIN_PORT=8081
+sporty/
+├── backend/
+│   ├── database/        # Esquema SQL, datos iniciales y migraciones
+│   ├── public/
+│   │   ├── api/auth/    # API de la app: feed, perfiles, rutinas, mensajes, mapa…
+│   │   ├── api/admin/   # API del panel: métricas, usuarios, reportes y baneos
+│   │   └── uploads/     # Avatares, posts, historias y fotos de chats
+│   └── src/             # Conexión a la BD, utilidades, correo y plantillas
+├── frontend/
+│   ├── auth/            # Login y registro
+│   ├── user/            # Inicio, explorar, mapa, mensajes, notificaciones y perfiles
+│   ├── admin/           # Panel de administración
+│   └── assets/          # JavaScript por página e imágenes
+└── docker-compose.yml   # PHP + Apache, MySQL, phpMyAdmin y Nginx Proxy Manager
 ```
 
----
+El frontend son páginas HTML estáticas que llaman por `fetch` a los endpoints PHP de `backend/public/api`, que responden en JSON. La sesión se guarda en una sesión PHP y el rol (usuario o administrador) decide a qué vista se redirige al entrar.
 
-## Inicialización y reseteo de la base de datos
+## Puesta en marcha
 
-La base de datos se crea automáticamente desde el SQL de la carpeta `/backend/database/`.  
-Para reiniciar y eliminar todos los datos (recreando la estructura inicial):
+Necesitas Docker Desktop.
+
+1. Clona el repositorio y copia `.env.example` como `.env` con tus credenciales.
+2. Levanta los servicios:
+
+   ```bash
+   docker compose up -d --build
+   ```
+
+3. Abre la app en http://localhost:8080/frontend/auth/login.html y phpMyAdmin en http://localhost:8081.
+
+La base de datos se crea sola a partir de `backend/database/`. Para borrarla y empezar de cero:
 
 ```bash
 docker compose down -v
@@ -169,35 +110,10 @@ docker volume rm sportyx_db_data
 docker compose up -d --build
 ```
 
----
-
-## Endpoints principales disponibles
-
-- POST `/backend/public/api/auth/signup.php` (registro)
-- POST `/backend/public/api/auth/login.php` (login)
-- GET  `/backend/public/api/auth/logout.php` (logout)
-- GET  `/backend/public/api/admin/dashboard.php` (métricas admin)
-
----
-
-## Privilegios administrador
-
-Por defecto, el registro genera usuarios sin rol administrador. Para hacer administrador a un usuario:
+Los usuarios nuevos se registran sin rol de administrador. Para dar ese rol a uno:
 
 ```sql
 UPDATE usuarios SET admin = 1 WHERE nickname = 'nombre_usuario';
 ```
 
----
-
-## Seguridad
-
-- Es obligatorio cambiar las contraseñas por defecto y usar valores fuertes.
-- phpMyAdmin en servidor debe estar restringido solo a administradores y protegido por Access List.
-- El archivo `.env` nunca debe incluirse en el repositorio.
-
----
-
-## Documentación adicional
-
-Para más detalles, consulta la carpeta `/docs` o abre una incidencia en el repositorio si tienes dudas específicas.
+En el servidor, phpMyAdmin está en https://admin.esporty.jcloudhosting.com, restringido con una Access List. Usa contraseñas fuertes y no subas nunca el `.env` al repositorio.
