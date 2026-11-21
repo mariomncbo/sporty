@@ -3,8 +3,22 @@
 </div>
 <br>
 <div align="center">
-  <p><b>Sporty</b> es una aplicación web para gestión deportiva-social, compuesta por frontend (HTML/CSS/JS) y backend (PHP).  
-Incluye autenticación de usuarios y panel de administración básico.</p>
+  <p><b>Sporty</b> es una red social deportiva: comparte entrenamientos, crea y sigue rutinas, chatea con otros atletas y entrenadores y descubre gimnasios cerca de ti.  
+Compuesta por frontend (HTML/CSS/JS) y backend (PHP).</p>
+</div>
+
+<!--
+  VÍDEOS: GitHub solo reproduce un MP4 dentro del README si se sube desde el editor web.
+  Para incrustarlos: edita este archivo en github.com, arrastra cada vídeo de docs/media/
+  justo debajo de su marcador "▶ VÍDEO: ..." y borra la línea del enlace.
+-->
+
+<div align="center">
+
+▶ VÍDEO: [docs/media/general.mp4](docs/media/general.mp4) — recorrido general (escritorio)
+
+▶ VÍDEO: [docs/media/general-movil.mp4](docs/media/general-movil.mp4) — recorrido general (móvil)
+
 </div>
 
 ---
@@ -12,9 +26,51 @@ Incluye autenticación de usuarios y panel de administración básico.</p>
 ## Estado actual
 
 - En desarrollo activo.
-- Autenticación funcional.
-- Panel de administración operativo.
-- Redirección automática según rol de usuario.
+- Autenticación con redirección automática según rol de usuario.
+- Feed con publicaciones e historias, comentarios y publicaciones guardadas.
+- Perfiles públicos y privados, seguidores y solicitudes de seguimiento.
+- Rutinas con ejercicios, modo entrenamiento y rutinas sociales (likes y guardadas).
+- Mensajería directa y notificaciones.
+- Mapa de gimnasios cercanos.
+- Panel de administración: métricas, usuarios, reportes y baneos.
+
+---
+
+## Funcionalidades
+
+> Los vídeos usan usuarios, conversaciones y gimnasios ficticios.
+
+### Inicio e historias
+Feed con las publicaciones de la gente a la que sigues, historias que caducan a las 24 h, comentarios, publicaciones guardadas y subida de nuevos posts con foto.
+
+▶ VÍDEO: [docs/media/feed.mp4](docs/media/feed.mp4)
+
+### Explorar y perfiles
+Busca atletas y entrenadores por nombre o por deporte, visita su perfil y síguelos.
+
+▶ VÍDEO: [docs/media/explorar.mp4](docs/media/explorar.mp4)
+
+### Rutinas y modo entrenamiento
+Crea rutinas con series, repeticiones y peso, entrena con cronómetro y checklist, y dale like o guarda las rutinas de otros usuarios.
+
+▶ VÍDEO: [docs/media/rutinas.mp4](docs/media/rutinas.mp4)
+
+### Mensajes y notificaciones
+Chat directo entre usuarios, con mensajes nuevos que llegan sin recargar, y notificaciones de seguidores, comentarios y mensajes.
+
+▶ VÍDEO: [docs/media/mensajes.mp4](docs/media/mensajes.mp4)
+
+### Mapa de gimnasios
+Gimnasios cercanos a tu ubicación, con su estado (abierto o cerrado), la distancia, qué amigos lo siguen y la opción de seguirlo.
+
+> En el vídeo, el mapa es una simulación (OpenStreetMap y gimnasios inventados), porque la API de Google Maps no está activada. La tarjeta del gimnasio y el botón de seguir son los de la app.
+
+▶ VÍDEO: [docs/media/mapa.mp4](docs/media/mapa.mp4)
+
+### Panel de administración
+Métricas generales, gestión de reportes por estado y tipo, baneos permanentes o temporales y gestión de usuarios.
+
+▶ VÍDEO: [docs/media/admin.mp4](docs/media/admin.mp4)
 
 ---
 

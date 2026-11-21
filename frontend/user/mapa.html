@@ -95,7 +95,7 @@
                 </span>
                 <span>Publicar</span>
             </button>
-            <a href="mensajes.html"
+            <a id="navMensajesLink" href="mensajes.html"
                 class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -103,7 +103,7 @@
                 </svg>
                 <span>Mensajes</span>
             </a>
-            <a href="notificaciones.html"
+            <a id="navNotifLink" href="notificaciones.html"
                 class="flex items-center gap-4 text-gray-400 hover:text-white group text-sm font-bold">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -131,9 +131,9 @@
                     </div>
                     <div class="flex flex-col text-left truncate">
                         <span id="nombre_user_aside"
-                            class="text-sm font-black text-white truncate group-hover:text-[#00bf63] transition-colors">Usuario</span>
+                            class="text-sm font-black text-white truncate group-hover:text-[#00bf63] transition-colors"></span>
                         <span id="username_user_aside"
-                            class="text-[10px] text-gray-500 font-bold uppercase tracking-widest truncate">@usuario</span>
+                            class="text-[10px] text-gray-500 font-bold uppercase tracking-widest truncate"></span>
                     </div>
                 </div>
             </button>
@@ -159,13 +159,13 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
                 </svg>
             </button>
-            <a href="mensajes.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+            <a id="navMensajesMobile" href="mensajes.html" class="text-gray-400"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                 </svg></a>
             <a href="perfil.html" class="focus:outline-none">
-                <img src="" alt="" class="w-8 h-8 rounded-full border border-gray-600 bg-gray-800 object-cover">
+                <img id="foto_user_mobile_nav" src="" alt="" class="w-8 h-8 rounded-full border border-gray-600 bg-gray-800 object-cover">
             </a>
         </div>
     </nav>
@@ -268,6 +268,26 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgZdcfmimzAlR31SvAozhtnB8QSg5sboc&libraries=places,geometry&callback=initMap&loading=async"
         async defer></script>
+
+    <script src="../assets/js/user/nav-badge.js"></script>
+    <script>
+        // Datos del usuario en la barra lateral (igual que en el resto de páginas)
+        (async () => {
+            try {
+                const res  = await fetch('../../backend/public/api/auth/user.php', { credentials: 'include' });
+                if (!res.ok) { window.location.href = '../auth/login.html'; return; }
+                const data = await res.json();
+                if (!data.success) { window.location.href = '../auth/login.html'; return; }
+                const u    = data.usuario || {};
+                const foto = u.foto_perfil || '../assets/img/no_user_profile.png';
+                document.getElementById('foto_user_aside').src             = foto;
+                document.getElementById('nombre_user_aside').textContent   = u.name || u.nickname || '';
+                document.getElementById('username_user_aside').textContent = '@' + (u.nickname || '');
+                const mobileNav = document.getElementById('foto_user_mobile_nav');
+                if (mobileNav) mobileNav.src = foto;
+            } catch (_) {}
+        })();
+    </script>
 
     <script>
         let mapa;
