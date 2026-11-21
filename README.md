@@ -1,9 +1,7 @@
 <div align="center">
   <img src="frontend/assets/img/logotipoSporty.png" alt="Sporty" width="120" />
   <h1>Sporty</h1>
-  <p>
-    <a href="https://esporty.jcloudhosting.com"><b>Web</b></a>
-  </p>
+  
   <p>La red social para los que entrenan: comparte tus <b>entrenamientos</b>, crea <b>rutinas</b> y encuentra <b>gimnasios</b> cerca de ti.<br />Sigue a otros atletas y entrenadores, chatea con ellos y entrena con sus rutinas.</p>
 </div>
 
