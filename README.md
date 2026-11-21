@@ -7,17 +7,17 @@
 Compuesta por frontend (HTML/CSS/JS) y backend (PHP).</p>
 </div>
 
-<!--
-  VÍDEOS: GitHub solo reproduce un MP4 dentro del README si se sube desde el editor web.
-  Para incrustarlos: edita este archivo en github.com, arrastra cada vídeo de docs/media/
-  justo debajo de su marcador "▶ VÍDEO: ..." y borra la línea del enlace.
--->
-
 <div align="center">
 
-▶ VÍDEO: [docs/media/general.mp4](docs/media/general.mp4) — recorrido general (escritorio)
 
-▶ VÍDEO: [docs/media/general-movil.mp4](docs/media/general-movil.mp4) — recorrido general (móvil)
+
+https://github.com/user-attachments/assets/9ca78d96-bff8-444e-a117-1a40987177f1
+
+
+
+https://github.com/user-attachments/assets/a1f187a2-00de-4df4-8b0b-5b993746794d
+
+
 
 </div>
 
@@ -38,39 +38,49 @@ Compuesta por frontend (HTML/CSS/JS) y backend (PHP).</p>
 
 ## Funcionalidades
 
-> Los vídeos usan usuarios, conversaciones y gimnasios ficticios.
-
 ### Inicio e historias
 Feed con las publicaciones de la gente a la que sigues, historias que caducan a las 24 h, comentarios, publicaciones guardadas y subida de nuevos posts con foto.
 
-▶ VÍDEO: [docs/media/feed.mp4](docs/media/feed.mp4)
+
+https://github.com/user-attachments/assets/cffd3f6a-534f-4954-a318-206564a9ad56
+
 
 ### Explorar y perfiles
 Busca atletas y entrenadores por nombre o por deporte, visita su perfil y síguelos.
 
-▶ VÍDEO: [docs/media/explorar.mp4](docs/media/explorar.mp4)
+
+https://github.com/user-attachments/assets/6d7d0900-09bf-4baa-bbd5-bdbccd99f599
+
 
 ### Rutinas y modo entrenamiento
 Crea rutinas con series, repeticiones y peso, entrena con cronómetro y checklist, y dale like o guarda las rutinas de otros usuarios.
 
-▶ VÍDEO: [docs/media/rutinas.mp4](docs/media/rutinas.mp4)
+
+https://github.com/user-attachments/assets/b2df6fee-c78e-45c6-be09-37c303c66de5
+
 
 ### Mensajes y notificaciones
 Chat directo entre usuarios, con mensajes nuevos que llegan sin recargar, y notificaciones de seguidores, comentarios y mensajes.
 
-▶ VÍDEO: [docs/media/mensajes.mp4](docs/media/mensajes.mp4)
+
+https://github.com/user-attachments/assets/0d751b2e-8e48-4fbc-8a96-5584e9db5b96
+
 
 ### Mapa de gimnasios
 Gimnasios cercanos a tu ubicación, con su estado (abierto o cerrado), la distancia, qué amigos lo siguen y la opción de seguirlo.
 
 > En el vídeo, el mapa es una simulación (OpenStreetMap y gimnasios inventados), porque la API de Google Maps no está activada. La tarjeta del gimnasio y el botón de seguir son los de la app.
 
-▶ VÍDEO: [docs/media/mapa.mp4](docs/media/mapa.mp4)
+
+https://github.com/user-attachments/assets/db0f4dd4-15e7-4c4e-8c32-51550535c717
+
 
 ### Panel de administración
 Métricas generales, gestión de reportes por estado y tipo, baneos permanentes o temporales y gestión de usuarios.
 
-▶ VÍDEO: [docs/media/admin.mp4](docs/media/admin.mp4)
+
+https://github.com/user-attachments/assets/3c785faf-db83-4e86-b5f3-e6402459becf
+
 
 ---
 
