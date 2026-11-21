@@ -53,8 +53,6 @@
   <sub>También en el móvil</sub>
 </p>
 
-<sub>Las capturas usan usuarios y gimnasios ficticios.</sub>
-
 ## Stack tecnológico
 
 | Capa | Tecnología |
